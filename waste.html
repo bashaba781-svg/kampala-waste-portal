@@ -1,0 +1,91 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Administrator Sign in | Solid Waste Collection and Citizen Engagement Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2ea;--surface:#fff;--ink:#14261c;--muted:#506258;--green:#1f7a4d;--lime:#c8e66a;--line:#d5ddd0;--warn:#b5481f;--side:#14261c;--sidefg:#e8f0e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1410;--surface:#172720;--ink:#e8f0e4;--muted:#9fb3a6;--green:#5fd093;--line:#2a3e33;--warn:#f08a5d;--side:#0a120e}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Figtree,system-ui,sans-serif;min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+h1,h2{font-family:'Bricolage Grotesque',Georgia,sans-serif;margin:0}
+.side{background:var(--side);color:var(--sidefg);padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.brand{display:flex;align-items:center;gap:10px;font:800 1.1rem 'Bricolage Grotesque',sans-serif}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--lime);color:#14261c;display:grid;place-items:center;font-size:1.3rem}
+.side h2{font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.08;font-weight:800;max-width:14ch}
+.side p{color:#a9bdb0;max-width:38ch;margin:14px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stats div{border-top:2px solid var(--lime);padding-top:10px;font-size:.85rem;color:#a9bdb0}
+.stats b{display:block;font:800 1.2rem 'Bricolage Grotesque',sans-serif;color:var(--sidefg)}
+.main{display:grid;place-items:center;padding:32px 20px}
+.card{width:100%;max-width:410px}
+.badge{display:inline-block;background:var(--lime);color:#14261c;font-weight:600;font-size:.8rem;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+h1{font-size:clamp(1.7rem,4vw,2.2rem);font-weight:800;line-height:1.1;margin-bottom:6px}
+.sub{color:var(--muted);margin:0 0 8px}
+label{display:block;font-weight:600;font-size:.92rem;margin:16px 0 6px}
+.field{position:relative}
+input[type=text],input[type=password]{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.show{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--green);font:600 .88rem Figtree,sans-serif;padding:8px 10px;cursor:pointer}
+.code{letter-spacing:.4em;font-weight:600;text-align:center}
+.hint{font-size:.84rem;color:var(--muted);margin-top:5px}
+.row{display:flex;justify-content:space-between;align-items:center;margin:14px 0 20px;font-size:.92rem;gap:10px;flex-wrap:wrap}
+a{color:var(--green);font-weight:600}
+.btn{width:100%;background:var(--green);color:#fff;border:0;padding:14px;border-radius:999px;font:600 1.02rem Figtree,sans-serif;cursor:pointer}
+.msg{min-height:1.5em;margin-top:14px;font-weight:600;font-size:.95rem}
+.sec{display:flex;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:20px;font-size:.86rem;color:var(--muted)}
+.note{margin-top:16px;color:var(--muted);font-size:.86rem}
+@media (max-width:820px){body{grid-template-columns:1fr}.side{padding:26px 22px;gap:18px}.side h2{font-size:1.7rem}.stats{display:none}}
+</style>
+</head>
+<body>
+<aside class="side">
+<div class="brand"><span class="logo" aria-hidden="true">♻</span>Kampala Waste Portal</div>
+<div>
+<h2>Run cleaner collection, with the full picture.</h2>
+<p>Track routes, assign citizen tickets and hold contractors accountable from one dashboard.</p>
+</div>
+<div class="stats"><div><b>Live</b>Route monitoring</div><div><b>Tickets</b>Assign and resolve</div><div><b>Reports</b>Performance data</div></div>
+</aside>
+
+<main class="main">
+<div class="card">
+<span class="badge">Administrators only</span>
+<h1>Administrator sign in</h1>
+<p class="sub">Solid Waste Collection and Citizen Engagement Portal</p>
+<form id="f" novalidate>
+<label for="u">Staff email or ID</label>
+<input type="text" id="u" autocomplete="username" placeholder="name@organisation.go.ug or staff ID">
+<label for="p">Password</label>
+<div class="field"><input type="password" id="p" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="show" id="sh" aria-pressed="false">Show</button></div>
+<label for="c">Verification code</label>
+<input type="text" id="c" class="code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000">
+<div class="hint">Enter the 6-digit code from your authenticator app or SMS.</div>
+<div class="row"><span></span><a href="#forgot" id="fg">Forgot password?</a></div>
+<button class="btn" type="submit">Sign in to dashboard</button>
+<div class="msg" id="msg" role="status" aria-live="polite"></div>
+</form>
+<div class="sec"><span aria-hidden="true">🔒</span><span>Authorised municipal staff only. All sign-ins are logged. Never share your credentials.</span></div>
+<p class="note">Locked out? Contact support on 0755530904.</p>
+</div>
+</main>
+
+<script>
+var f=document.getElementById('f'),u=document.getElementById('u'),p=document.getElementById('p'),c=document.getElementById('c'),m=document.getElementById('msg');
+function say(t,ok){m.style.color=ok?'var(--green)':'var(--warn)';m.textContent=t}
+document.getElementById('sh').addEventListener('click',function(){
+ var h=p.type==='password';p.type=h?'text':'password';this.textContent=h?'Hide':'Show';this.setAttribute('aria-pressed',h)});
+c.addEventListener('input',function(){c.value=c.value.replace(/\D/g,'')});
+f.addEventListener('submit',function(e){
+ e.preventDefault();
+ if(!u.value.trim()){say('Enter your staff email or ID.',false);u.focus();return}
+ if(p.value.length<8){say('Password must be at least 8 characters.',false);p.focus();return}
+ if(c.value.length!==6){say('Enter the 6-digit verification code.',false);c.focus();return}
+ say('Verified. This is a demo, so no real administrator account was used.',true)});
+document.getElementById('fg').addEventListener('click',function(e){e.preventDefault();say('Password reset is not connected yet in this demo.',false)});
+</script>
+</body>
+</html>
